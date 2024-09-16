@@ -3,11 +3,12 @@ import axios from 'axios';
 
 // ユーザー情報を取得する関数
 export const fetchPageData = async (pageId: string = ""): Promise<any> => {
-    let endpoint: string = "";
+    let endpoint: string = `${process.env.NEXT_PUBLIC_API_URL}`;
     try {
         // 外部APIエンドポイント
-        if (pageId !== "") endpoint = `/${process.env.NEXT_PUBLIC_API_URL}${pageId}`;
-        console.log(`endpoint ${process.env.NEXT_PUBLIC_API_URL} KEY ${process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY}`)
+        if (pageId !== "") endpoint = `${endpoint}/${pageId}`;
+        console.log(endpoint);
+        // console.log(`endpoint ${process.env.NEXT_PUBLIC_API_URL} KEY ${process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY}`)
         const response = await axios.get(
             `${endpoint}`,
             {
