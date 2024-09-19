@@ -11,7 +11,6 @@ export default function Home() {
 
   const [pageData, setPageData] = useState(null);
 
-
   useEffect(() => {
     fetchPageData().then((data) => {
       const array = Object.entries(data.contents);
