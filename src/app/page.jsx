@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchPageData } from "./lib/services/userApi";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +10,7 @@ import Image from "next/image";
 export default function Home() {
 
   const [pageData, setPageData] = useState(null);
+
 
   useEffect(() => {
     fetchPageData().then((data) => {

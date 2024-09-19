@@ -7,7 +7,7 @@ export const fetchPageData = async (pageId: string = ""): Promise<any> => {
     try {
         // 外部APIエンドポイント
         if (pageId !== "") endpoint = `${endpoint}/${pageId}`;
-        console.log(endpoint);
+        // console.log(endpoint);
         // console.log(`endpoint ${process.env.NEXT_PUBLIC_API_URL} KEY ${process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY}`)
         const response = await axios.get(
             `${endpoint}`,

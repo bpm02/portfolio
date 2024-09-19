@@ -30,6 +30,8 @@
     "config/index.ts"
 ,
 "src/app/page.jsx"
+,
+"src/app/post/[slug]/page.jsx"
 ],
   "exclude": ["node_modules"]
 }
