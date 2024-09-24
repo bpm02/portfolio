@@ -6,6 +6,9 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-font: 0,
+      0,
+      0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,17 +20,23 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--color-font));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.profile {
+  grid-template-columns: 1fr 300px;
+}
+
+.profile__image {
+  aspect-ratio: 1/1.616;
+  background-color: gray;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }
