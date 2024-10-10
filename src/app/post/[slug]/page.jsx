@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchPageData } from "../../lib/services/userApi";
 import { usePathname } from 'next/navigation';
+import Image from "next/image";
 
 
 export default function Home() {
@@ -16,21 +17,41 @@ export default function Home() {
         fetchPageData(id).then((data) => {
             const array = Object.entries(data);
             setPageData(array)
-            // console.log(array);
+            console.log(array[7][1]);
 
         });
 
 
     }, []);
 
+    const thumbUrl = pageData ? (pageData[7][1]) : ([]);
+
 
     return (
         <>
+            <IsImage items={thumbUrl} />
             <h1>{pageData ? (pageData[5][1]) : (<p>loading...</p>)}</h1>
             <HTMLContentComponent pageData={pageData} />
         </>
     );
 }
+
+const IsImage = ({ items }) => {
+    if (items.length === 0) {
+        return null; // 空の配列なら何も返さない
+    }
+
+    return (
+        <>
+            <Image
+                src={items['url']}
+                width={items['width']}
+                height={items['height']}
+                alt=""
+            />
+        </>
+    );
+};
 
 
 const HTMLContentComponent = ({ pageData }) => {

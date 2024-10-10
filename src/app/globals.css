@@ -19,6 +19,9 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   color: rgb(var(--color-font));
 }
@@ -29,14 +32,99 @@ body {
   }
 }
 
-.profile {
-  grid-template-columns: 1fr 300px;
+.main-visual {
+  background-image: url(../../public/_mv/_mv-laptop-pc.jpg);
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 
+.main-visual .title-wrap {
+  position: absolute;
+  left: 10vw;
+  top: 50vh;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title--site {
+  font-size: 30px;
+}
+
+h2.title {
+  font-size: 28px;
+  margin-bottom: 0.75em;
+}
+
+
+.nav {
+  display: flex;
+  height: auto;
+  backdrop-filter: blur(5px);
+  mix-blend-mode: color;
+}
+
+.nav .link {
+  color: #222;
+}
 .profile__image {
   aspect-ratio: 1/1.616;
   background-color: gray;
   max-width: 300px;
   width: 100%;
   height: auto;
+}
+.section {
+  width: 100%;
+}
+
+.section__inner {
+  margin: 50px auto;
+}
+
+.profile .section__inner {
+  grid-template-columns: 1fr 300px;
+}
+
+.profile dt {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.link--portfolio img {
+  filter: brightness(50%);
+  transition: all 0.3s;
+}
+
+.link--portfolio:hover img {
+  filter: brightness(25%) blur(5px);
+}
+
+
+/* 斜め背景 */
+
+.slant-bg {
+  width: 100%;
+  margin: 0;
+  padding: 150px 0;
+  position: relative;
+  top: 200px;
+}
+
+.slant-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: yellow;
+  transform: skewY(-7deg);
+  z-index: -1;
 }
