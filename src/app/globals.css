@@ -66,7 +66,7 @@ h2.title {
   display: flex;
   height: auto;
   backdrop-filter: blur(5px);
-  mix-blend-mode: color;
+  /* mix-blend-mode: color; */
 }
 
 .nav .link {
@@ -127,4 +127,21 @@ h2.title {
   background-color: yellow;
   transform: skewY(-7deg);
   z-index: -1;
+}
+/* portfolio page */
+.page--portfolio {
+  max-width: 1400px;
+  width: 90%;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.page--portfolio .title--page {
+  font-size: 24px;
+  margin-bottom: 0.75em;
+}
+
+/* footer */
+.footer {
+  text-align: center;
 }

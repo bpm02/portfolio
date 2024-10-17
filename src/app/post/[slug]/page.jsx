@@ -17,21 +17,30 @@ export default function Home() {
         fetchPageData(id).then((data) => {
             const array = Object.entries(data);
             setPageData(array)
-            console.log(array[7][1]);
+            console.log(array);
 
         });
 
 
     }, []);
 
-    const thumbUrl = pageData ? (pageData[7][1]) : ([]);
+    const { title, text, eyecatch, technology, overview } = pageData ? GetContents(pageData) : {};
+
+
+    const thumbUrl = eyecatch ? (eyecatch[1]) : ([]);
 
 
     return (
         <>
             <IsImage items={thumbUrl} />
-            <h1>{pageData ? (pageData[5][1]) : (<p>loading...</p>)}</h1>
-            <HTMLContentComponent pageData={pageData} />
+            <main className="page page--portfolio">
+                <div className="page__inner">
+                    <h1 className="title title--page">{title ? (title[1]) : ""}</h1>
+                    <p>{overview[1]}</p>
+                    <p>{technology[1]}</p>
+                    <HTMLContentComponent pageData={text} />
+                </div>
+            </main>                
         </>
     );
 }
@@ -53,10 +62,23 @@ const IsImage = ({ items }) => {
     );
 };
 
+const GetContents = (array) => {
+    if (!array || array.length === 0) {
+        return null; // 空の配列やnullの場合は何も返さない
+    }
+
+    const title = array[5];
+    const text = array[6];
+    const eyecatch = array[7];
+    const technology = array[9];
+    const overview = array[10];
+
+    return { title, text, eyecatch, technology, overview }; // オブジェクトで返す
+};
+
 
 const HTMLContentComponent = ({ pageData }) => {
-    // pageDataが存在し、かつpageData[6][1]が存在するかを確認
-    const htmlContent = pageData && pageData[6] && pageData[6][1] ? pageData[6][1] : null;
+    const htmlContent = pageData && pageData[1] ? pageData[1] : null;
 
     return (
         <div>

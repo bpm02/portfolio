@@ -21,12 +21,6 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <nav className="nav nav--main fixed z-10 w-full text-center">
-        <ul className="list list--main-nav  flex justify-end  bg-transparent p-4 gap-3 ml-auto mr-0">
-          <li className="list__item"><a href="#creator" className="link">製作者</a></li>
-          <li className="list__item"><a href="#portfolio" className="link">ポートフォリオ</a></li>
-        </ul>
-      </nav>
       <div className="main-visual">
         <div className="title-wrap">
           <h1 className="title title--site">Daisuke Harada's<br></br>Portfolio</h1>

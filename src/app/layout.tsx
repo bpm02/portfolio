@@ -16,7 +16,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="wrapper">
+          <nav className="nav nav--main fixed z-10 w-full text-center">
+            <ul className="list list--main-nav  flex justify-end  bg-transparent p-4 gap-3 ml-auto mr-0">
+              <li className="list__item"><a href="#creator" className="link">製作者</a></li>
+              <li className="list__item"><a href="#portfolio" className="link">ポートフォリオ</a></li>
+            </ul>
+          </nav>
+          {children}
+          <footer className="footer"><small className="copy">© daisuke harada. 2024</small></footer>
+        </div>
+      </body>
     </html>
   );
 }
