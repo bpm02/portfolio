@@ -25,10 +25,7 @@ export default function Home() {
     }, []);
 
     const { title, text, eyecatch, technology, overview } = pageData ? GetContents(pageData) : {};
-
-
     const thumbUrl = eyecatch ? (eyecatch[1]) : ([]);
-
 
     return (
         <>
@@ -36,8 +33,12 @@ export default function Home() {
             <main className="page page--portfolio">
                 <div className="page__inner">
                     <h1 className="title title--page">{title ? (title[1]) : ""}</h1>
-                    <p>{overview[1]}</p>
-                    <p>{technology[1]}</p>
+                    <dl className="post-meta">
+                        <dt className="post-meta__title">概要</dt>
+                        <dd className="post-meta__text">{overview ? (overview[1]) : ""}</dd>
+                        <dt className="post-meta__title">使用技術</dt>
+                        <dd className="post-meta__text">{technology ? (technology[1]) : ""}</dd>
+                    </dl>
                     <HTMLContentComponent pageData={text} />
                 </div>
             </main>                

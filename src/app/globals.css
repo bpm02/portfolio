@@ -137,10 +137,22 @@ h2.title {
 }
 
 .page--portfolio .title--page {
-  font-size: 24px;
+  font-size: 32px;
   margin-bottom: 0.75em;
 }
 
+.post-meta {
+  margin-bottom: 2.5em;
+}
+
+.post-meta__title {
+  margin-bottom: 0.3em;
+  font-weight: 600;
+}
+
+.post-meta__text {
+  margin-bottom: 1em;
+}
 /* footer */
 .footer {
   text-align: center;

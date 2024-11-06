@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body className={inter.className}>
         <div className="wrapper">
           <nav className="nav nav--main fixed z-10 w-full text-center">
