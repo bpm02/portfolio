@@ -97,13 +97,36 @@ h2.title {
   margin-bottom: 15px;
 }
 
+.link--portfolio {
+  position: relative;
+}
+
+.link--portfolio::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+
 .link--portfolio img {
-  filter: brightness(50%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: 0 0;
+  filter: brightness(25%);
   transition: all 0.3s;
 }
 
 .link--portfolio:hover img {
-  filter: brightness(25%) blur(5px);
+  filter: brightness(100%);
+    object-position: center;
+}
+
+.link--portfolio:hover span {
+  filter: blur(4px);
 }
 
 

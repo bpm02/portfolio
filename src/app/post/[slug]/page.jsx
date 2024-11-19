@@ -47,7 +47,7 @@ export default function Home() {
 }
 
 const IsImage = ({ items }) => {
-    if (items.length === 0) {
+    if (!items || items.length === 0) {
         return null; // 空の配列なら何も返さない
     }
 
