@@ -19,6 +19,8 @@ export default function Home() {
     });
   }, []);
 
+
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="main-visual">
@@ -51,13 +53,7 @@ export default function Home() {
                 {pageData ? (pageData.map((item, index) => (
                   <li key={index} className="list__item">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
-                      <Image
-                        src={item[1]['eyecatch']['url']}
-                        width={item[1]['eyecatch']['width']}
-                        height={item[1]['eyecatch']['height']}
-                        alt="アイキャッチ画像"
-                        className="absolute inset-0 aspect-square m-auto brightness-50"
-                      />
+                      <IsImage items={item[1]['eyecatch']} />
                       <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']}</span></Link>
                   </li>
                 ))) : (<li>Loding...</li>)}
@@ -69,3 +65,22 @@ export default function Home() {
     </main >
   );
 }
+
+
+const IsImage = ({ items }) => {
+  if (!items || items.length === 0) {
+    return null; // 空の配列なら何も返さない
+  }
+
+  return (
+    <>
+      <Image
+        src={items['url']}
+        width={items['width']}
+        height={items['height']}
+        alt=""
+        className="absolute inset-0 aspect-square m-auto brightness-50"
+      />
+    </>
+  );
+};
