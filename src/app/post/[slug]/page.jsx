@@ -8,41 +8,55 @@ import Image from "next/image";
 
 
 export default function Home() {
-
+    const [allPageData, setAllPageData] = useState(null);
     const [pageData, setPageData] = useState(null);
     const urlPath = usePathname();
 
     useEffect(() => {
         const id = urlPath.replace('/post/', '');
+        console.log(`id: ${id}`);
+        fetchPageData().then((data) => {
+            const array = Object.entries(data.contents);
+            setAllPageData(array);
 
-        fetchPageData(id).then((data) => {
-            const array = Object.entries(data);
-            setPageData(array)
-            console.log(array);
-
+            array.some((item) => {
+                if (item[1]["id"] == id) {
+                    setPageData(item[1]);
+                    // console.log(`true ${item[1]}`);
+                    return true;
+                }
+            });
+            // console.log(array)
         });
+
+
+        // fetchPageData(id).then((data) => {
+        //     const array = Object.entries(data);
+        //     setPageData(array)
+        //     console.log(array);
+        // });
 
 
     }, []);
 
     const { title, text, eyecatch, category, url, inCharge, technology, overview } = pageData ? GetContents(pageData) : {};
-    const thumbUrl = eyecatch ? (eyecatch[1]) : ([]);
+    const thumbUrl = eyecatch ? (eyecatch) : ([]);
 
     return (
         <>
             <IsImage items={thumbUrl} />
             <main className="page page--portfolio">
                 <div className="page__inner">
-                    <h1 className="title title--page">{title ? (title[1]) : ""}</h1>
+                    <h1 className="title title--page">{title ? (title) : ""}</h1>
                     <dl className="post-meta">
                         <dt className="post-meta__title">URL</dt>
-                        <dd className="post-meta__text"><Link href={url ? (url[1]) : ""} target="_blank">{url ? (url[1]) : ""}</Link></dd>
+                        <dd className="post-meta__text"><Link href={url ? (url) : ""} target="_blank">{url ? (url) : ""}</Link></dd>
                         <dt className="post-meta__title">概要</dt>
-                        <dd className="post-meta__text">{overview ? (overview[1]) : ""}</dd>
+                        <dd className="post-meta__text">{overview ? (overview) : ""}</dd>
                         <dt className="post-meta__title">担当</dt>
-                        <dd className="post-meta__text">{inCharge ? (inCharge[1]) : ""}</dd>
+                        <dd className="post-meta__text">{inCharge ? (inCharge) : ""}</dd>
                         <dt className="post-meta__title">使用技術</dt>
-                        <dd className="post-meta__text">{technology ? (technology[1]) : ""}</dd>
+                        <dd className="post-meta__text">{technology ? (technology) : ""}</dd>
                     </dl>
                     <HTMLContentComponent pageData={text} />
                 </div>
@@ -69,18 +83,23 @@ const IsImage = ({ items }) => {
 };
 
 const GetContents = (array) => {
-    if (!array || array.length === 0) {
-        return null; // 空の配列やnullの場合は何も返さない
+    console.log(`content ${JSON.stringify(array)}`);
+    if (!array) {
+        return null;
     }
 
-    const title = array[5] ? array[5] : "";
-    const text = array[6] ? array[6] : "";
-    const eyecatch = array[6] ? array[6] : "";
-    const category = array[7] ? array[7] : "";
-    const url = array[8] ? array[8] : "";
-    const inCharge = array[9] ? array[9] : "";
-    const technology = array[10] ? array[10] : "";
-    const overview = array[11] ? array[11] : "";
+    // if (!array || array.length === 0) {
+    //     return null; // 空の配列やnullの場合は何も返さない
+    // }
+
+    const title = array.title ? array.title : "";
+    const text = array.text ? array.text : "";
+    const eyecatch = array.eyecatch ? array.eyecatch : "";
+    const category = array.category ? array.category : "";
+    const url = array.url ? array.url : "";
+    const inCharge = array.inCharge ? array.inCharge : "";
+    const technology = array.technology ? array.technology : "";
+    const overview = array.overview ? array.overview : "";
 
     return { title, text, eyecatch, category, url, inCharge, technology, overview }; // オブジェクトで返す
 };
