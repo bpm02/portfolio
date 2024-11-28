@@ -5,29 +5,55 @@ import { fetchPageData } from "../../lib/services/userApi";
 import { usePathname } from 'next/navigation';
 import Link from 'next/link'
 import Image from "next/image";
+import next from "next";
 
 
 export default function Home() {
     const [allPageData, setAllPageData] = useState(null);
     const [pageData, setPageData] = useState(null);
+    const [prevPageData, setPrevPageData] = useState(null);
+    const [nextPageData, setNextPageData] = useState(null);
     const urlPath = usePathname();
+
 
     useEffect(() => {
         const id = urlPath.replace('/post/', '');
         console.log(`id: ${id}`);
         fetchPageData().then((data) => {
             const array = Object.entries(data.contents);
+            let currentNum = -1;
+            let prevNum = -1;
+            let nextNum = -1;
             setAllPageData(array);
-
+            // console.log(array);
             array.some((item) => {
                 if (item[1]["id"] == id) {
                     setPageData(item[1]);
-                    // console.log(`true ${item[1]}`);
+                    currentNum = item[0];
+                    console.log(`cuurent num ${currentNum}`)
+                    prevNum = Number(currentNum) - 1;
+                    nextNum = Number(currentNum) + 1;
+
+                    // console.log(`next ${nextNum} : ${JSON.stringify(array[nextNum])}`);
+
+
+                    if (array[prevNum]) {
+                        setPrevPageData(array[prevNum][1]);
+                        console.log(`prev ${prevNum} : ${JSON.stringify(prevPageData)}`);
+                    }
+
+                    if (array[nextNum]) {
+                        setNextPageData(array[nextNum][1]);
+                        console.log(`next ${nextNum} : ${JSON.stringify(nextPageData)}`);
+                    }
+
                     return true;
                 }
             });
             // console.log(array)
         });
+
+
 
 
         // fetchPageData(id).then((data) => {
@@ -41,6 +67,8 @@ export default function Home() {
 
     const { title, text, eyecatch, category, url, inCharge, technology, overview } = pageData ? GetContents(pageData) : {};
     const thumbUrl = eyecatch ? (eyecatch) : ([]);
+
+
 
     return (
         <>
@@ -60,7 +88,11 @@ export default function Home() {
                     </dl>
                     <HTMLContentComponent pageData={text} />
                 </div>
-            </main>                
+            </main>
+            <aside>
+                <Pager pageData={prevPageData} />
+                <Pager pageData={nextPageData} />
+            </aside>
         </>
     );
 }
@@ -83,7 +115,7 @@ const IsImage = ({ items }) => {
 };
 
 const GetContents = (array) => {
-    console.log(`content ${JSON.stringify(array)}`);
+    // console.log(`content ${JSON.stringify(array)}`);
     if (!array) {
         return null;
     }
@@ -119,3 +151,17 @@ const HTMLContentComponent = ({ pageData }) => {
         </div>
     );
 };
+
+const Pager = (pageData) => {
+    // console.log(`pager : ${JSON.stringify(pageData)}`);
+    // console.log(`pager-2 : ${pageData.title}`);
+    if (!pageData || pageData == undefined) {
+        return;
+    }
+    console.log(`pager : ${JSON.stringify(pageData)}`);
+    return (
+        <>
+            <Link href={pageData.pageData.url ? pageData.pageData.url : ""}>{pageData.pageData.title}</Link>
+        </>
+    )
+}
