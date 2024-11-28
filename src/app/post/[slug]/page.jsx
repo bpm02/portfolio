@@ -153,15 +153,16 @@ const HTMLContentComponent = ({ pageData }) => {
 };
 
 const Pager = (pageData) => {
-    // console.log(`pager : ${JSON.stringify(pageData)}`);
-    // console.log(`pager-2 : ${pageData.title}`);
-    if (!pageData || pageData == undefined) {
+    console.log(`pager : ${JSON.stringify(pageData)}`);
+
+
+    if (pageData.pageData == null) {
         return;
     }
     console.log(`pager : ${JSON.stringify(pageData)}`);
     return (
         <>
-            <Link href={pageData.pageData.url ? pageData.pageData.url : ""}>{pageData.pageData.title}</Link>
+            <Link href={pageData.pageData.id ? pageData.pageData.id : ""}>{pageData.pageData.title}</Link>
         </>
     )
 }
