@@ -30,26 +30,46 @@ export default function Home() {
       </div>
       <div className="contents">
 
-        <section id="creator" className="profile section slant-bg">
-          <div className="section__inner grid gap-5 items-center w-11/12">
+        <section id="creator" className="profile section section--profile slant-bg">
+          <div className="section__inner items-center w-11/12">
+            <div className="content grid gap-5">
             <div className="profile__text">
-              <dl className="">
+                <dl className="career">
                 <dt><ruby>原田 大介<rp>(</rp><rt>ハラダ　ダイスケ</rt><rp>)</rp></ruby></dt>
                 <dd>
-                  <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                    <p>20代はネット回線等の訪問営業。 30代から学生自体に身に着けた
+                      デザインと、自主的に身に着けていた WEBスキルでフリーランスとし
+                      て活動。</p>
+                    <p>中小企業のコーポレートサイトの作成や、 WEBサイトの運営のアドバ
+                      イス。チラシ作りや、 WEB広告代行などを行う。</p>
                 </dd>
               </dl>
             </div>
             <div className="profile__image">
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="portfolio" className="section">
+        <section id="skill" className="section section--skill">
+          <div className="section__inner w-11/12">
+            <h3 className="title">スキル</h3>
+            <ul className="list list--skill">
+              <li className="list__item">基礎コンピュータサイエンスの知識</li>
+              <li className="list__item">JavaScript・PHP・Python・MQLのプログラミング</li>
+              <li className="list__item">基礎ネットワークの知識</li>
+              <li className="list__item">WordPressのカスタマイズ</li>
+              <li className="list__item">簡単なデータベース設計</li>
+              <li className="list__item">Adobe Illustrator Photoshopによるデザイン</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="portfolio" className="section section--portfolio">
           <div className="section__inner w-11/12">
             <h2 className="title">Portfolio</h2>
             <div className="">
-              <ul className="list list--portfolio grid grid-cols-3 gap-3">
+              <ul className="list list--portfolio grid">
                 {pageData ? (pageData.map((item, index) => (
                   <li key={index} className="list__item">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
