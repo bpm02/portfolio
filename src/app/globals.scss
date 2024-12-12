@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --color-font: 0,
+    0,
+    0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--color-font));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.main-visual {
+  background-image: url(../../public/_mv/_mv-laptop-pc.jpg);
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+
+  .title-wrap {
+    position: absolute;
+    left: 10vw;
+    top: 50vh;
+  }
+}
+
+.title {
+  font-weight: bold;
+
+  &--site {
+    font-size: 30px;
+  }
+
+  h2 & {
+    font-size: 28px;
+    margin-bottom: 0.75em;
+  }
+}
+
+
+.nav {
+  display: flex;
+  height: auto;
+  backdrop-filter: blur(5px);
+
+  .link {
+    color: #222;
+  }
+}
+
+.profile__image {
+  aspect-ratio: 1/1.616;
+  background-color: gray;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.section {
+  width: 100%;
+
+  &__inner {
+    margin: 50px auto;
+  }
+}
+
+.profile {
+  .section__inner {
+    grid-template-columns: 1fr 300px;
+  }
+
+  dt {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+}
+
+
+
+.link--portfolio {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  &:hover {
+    img {
+      filter: brightness(100%);
+      object-position: center;
+    }
+
+    span {
+      filter: blur(4px);
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: 0 0;
+    filter: brightness(25%);
+    transition: all 0.3s;
+  }
+}
+
+/* 斜め背景 */
+
+.slant-bg {
+  width: 100%;
+  margin: 0;
+  padding: 150px 0;
+  position: relative;
+  top: 200px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: yellow;
+    transform: skewY(-7deg);
+    z-index: -1;
+  }
+}
+
+/* portfolio page */
+.page--portfolio {
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+  padding: 50px 0;
+
+  .title--page {
+    font-size: 32px;
+    margin-bottom: 0.75em;
+  }
+}
+
+.post-meta {
+  margin-bottom: 2.5em;
+
+  &__title {
+    margin-bottom: 0.3em;
+    font-weight: 600;
+  }
+
+  &__text {
+    margin-bottom: 1em;
+  }
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  width: 90%;
+  margin: 1rem auto;
+
+  .prev,
+  .next {
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before,
+    &::after {
+      position: absolute;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .prev {
+    margin-left: 1rem;
+
+    &::before {
+      content: "<-";
+      left: -1rem;
+    }
+  }
+
+  .next {
+    margin-right: 1rem;
+
+    &::after {
+      content: "->";
+    }
+  }
+}
+
+
+
+/* footer */
+.footer {
+  background: #ccc;
+  text-align: center;
+  padding: 1rem 0;
+}

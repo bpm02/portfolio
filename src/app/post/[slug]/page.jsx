@@ -89,9 +89,9 @@ export default function Home() {
                     <HTMLContentComponent pageData={text} />
                 </div>
             </main>
-            <aside>
-                <Pager pageData={prevPageData} />
-                <Pager pageData={nextPageData} />
+            <aside className="pager">
+                <Pager pageData={prevPageData} direction={'prev'} />
+                <Pager pageData={nextPageData} direction={'next'} />
             </aside>
         </>
     );
@@ -152,17 +152,17 @@ const HTMLContentComponent = ({ pageData }) => {
     );
 };
 
-const Pager = (pageData) => {
-    console.log(`pager : ${JSON.stringify(pageData)}`);
+const Pager = (props) => {
+    console.log(`pager : ${JSON.stringify(props)}`);
 
 
-    if (pageData.pageData == null) {
+    if (props.pageData == null) {
         return;
     }
-    console.log(`pager : ${JSON.stringify(pageData)}`);
+    console.log(`pager : ${JSON.stringify(props)}`);
     return (
         <>
-            <Link href={pageData.pageData.id ? pageData.pageData.id : ""}>{pageData.pageData.title}</Link>
+            <Link href={props.pageData.id ? props.pageData.id : ""} className={props.direction}>{props.pageData.title}</Link>
         </>
     )
 }

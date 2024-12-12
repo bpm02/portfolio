@@ -1,14 +1,14 @@
+@charset "UTF-8";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --color-font: 0,
-      0,
-      0;
+    0,
+    0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +18,10 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
 html {
   scroll-behavior: smooth;
 }
+
 body {
   color: rgb(var(--color-font));
 }
@@ -31,7 +31,6 @@ body {
     text-wrap: balance;
   }
 }
-
 .main-visual {
   background-image: url(../../public/_mv/_mv-laptop-pc.jpg);
   background-size: 100vw;
@@ -41,7 +40,6 @@ body {
   height: 100vh;
   position: relative;
 }
-
 .main-visual .title-wrap {
   position: absolute;
   left: 10vw;
@@ -51,27 +49,24 @@ body {
 .title {
   font-weight: bold;
 }
-
 .title--site {
   font-size: 30px;
 }
-
-h2.title {
+h2 .title {
   font-size: 28px;
   margin-bottom: 0.75em;
 }
 
-
 .nav {
   display: flex;
   height: auto;
-  backdrop-filter: blur(5px);
-  /* mix-blend-mode: color; */
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
 }
-
 .nav .link {
   color: #222;
 }
+
 .profile__image {
   aspect-ratio: 1/1.616;
   background-color: gray;
@@ -79,10 +74,10 @@ h2.title {
   width: 100%;
   height: auto;
 }
+
 .section {
   width: 100%;
 }
-
 .section__inner {
   margin: 50px auto;
 }
@@ -90,7 +85,6 @@ h2.title {
 .profile .section__inner {
   grid-template-columns: 1fr 300px;
 }
-
 .profile dt {
   font-size: 20px;
   font-weight: bold;
@@ -100,38 +94,34 @@ h2.title {
 .link--portfolio {
   position: relative;
 }
-
 .link--portfolio::before {
   content: "";
   display: block;
   padding-top: 100%;
 }
-
-
+.link--portfolio:hover img {
+  filter: brightness(100%);
+  -o-object-position: center;
+     object-position: center;
+}
+.link--portfolio:hover span {
+  filter: blur(4px);
+}
 .link--portfolio img {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  object-fit: cover;
-  object-position: 0 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0 0;
+     object-position: 0 0;
   filter: brightness(25%);
   transition: all 0.3s;
 }
 
-.link--portfolio:hover img {
-  filter: brightness(100%);
-    object-position: center;
-}
-
-.link--portfolio:hover span {
-  filter: blur(4px);
-}
-
-
 /* 斜め背景 */
-
 .slant-bg {
   width: 100%;
   margin: 0;
@@ -139,9 +129,8 @@ h2.title {
   position: relative;
   top: 200px;
 }
-
 .slant-bg::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -151,14 +140,14 @@ h2.title {
   transform: skewY(-7deg);
   z-index: -1;
 }
+
 /* portfolio page */
 .page--portfolio {
-  max-width: 1400px;
+  max-width: 900px;
   width: 90%;
   margin: auto;
   padding: 50px 0;
 }
-
 .page--portfolio .title--page {
   font-size: 32px;
   margin-bottom: 0.75em;
@@ -167,16 +156,52 @@ h2.title {
 .post-meta {
   margin-bottom: 2.5em;
 }
-
 .post-meta__title {
   margin-bottom: 0.3em;
   font-weight: 600;
 }
-
 .post-meta__text {
   margin-bottom: 1em;
 }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  width: 90%;
+  margin: 1rem auto;
+}
+.pager .prev,
+.pager .next {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.pager .prev::before, .pager .prev::after,
+.pager .next::before,
+.pager .next::after {
+  position: absolute;
+}
+.pager .prev:hover,
+.pager .next:hover {
+  opacity: 0.5;
+}
+.pager .prev {
+  margin-left: 1rem;
+}
+.pager .prev::before {
+  content: "<-";
+  left: -1rem;
+}
+.pager .next {
+  margin-right: 1rem;
+}
+.pager .next::after {
+  content: "->";
+}
+
 /* footer */
 .footer {
+  background: #ccc;
   text-align: center;
-}
+  padding: 1rem 0;
+}/*# sourceMappingURL=globals.css.map */
