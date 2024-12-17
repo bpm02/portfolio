@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link'
 import Image from "next/image";
 import next from "next";
+import localImage from "../../../../public/ico-new-window.svg";
 
 
 export default function Home() {
@@ -78,7 +79,17 @@ export default function Home() {
                     <h1 className="title title--page">{title ? (title) : ""}</h1>
                     <dl className="post-meta">
                         <dt className="post-meta__title">URL</dt>
-                        <dd className="post-meta__text"><Link href={url ? (url) : ""} target="_blank">{url ? (url) : ""}</Link></dd>
+                        <dd className="post-meta__text">
+                            <Link href={url ? (url) : ""} className="link link--new-window" target="_blank">
+                                {url ? (url) : ""}
+                                <Image
+                                    src={localImage}
+                                    width="16"
+                                    height="16"
+                                    alt="外部リンクへ"
+                                />
+                            </Link>
+                        </dd>
                         <dt className="post-meta__title">概要</dt>
                         <dd className="post-meta__text">{overview ? (overview) : ""}</dd>
                         <dt className="post-meta__title">担当</dt>
