@@ -35,17 +35,14 @@ export default function Home() {
                     prevNum = Number(currentNum) - 1;
                     nextNum = Number(currentNum) + 1;
 
-                    // console.log(`next ${nextNum} : ${JSON.stringify(array[nextNum])}`);
-
-
                     if (array[prevNum]) {
                         setPrevPageData(array[prevNum][1]);
-                        console.log(`prev ${prevNum} : ${JSON.stringify(prevPageData)}`);
+                        // console.log(`prev ${prevNum} : ${JSON.stringify(prevPageData)}`);
                     }
 
                     if (array[nextNum]) {
                         setNextPageData(array[nextNum][1]);
-                        console.log(`next ${nextNum} : ${JSON.stringify(nextPageData)}`);
+                        // console.log(`next ${nextNum} : ${JSON.stringify(nextPageData)}`);
                     }
 
                     return true;
@@ -54,15 +51,11 @@ export default function Home() {
             // console.log(array)
         });
 
-
-
-
         // fetchPageData(id).then((data) => {
         //     const array = Object.entries(data);
         //     setPageData(array)
         //     console.log(array);
         // });
-
 
     }, []);
 
@@ -70,10 +63,9 @@ export default function Home() {
     const thumbUrl = eyecatch ? (eyecatch) : ([]);
 
 
-
     return (
         <>
-            <IsImage items={thumbUrl} />
+            <IsImage items={thumbUrl} uniqueClassName="thumbnail"/>
             <main className="page page--portfolio">
                 <div className="page__inner">
                     <h1 className="title title--page">{title ? (title) : ""}</h1>
@@ -108,10 +100,12 @@ export default function Home() {
     );
 }
 
-const IsImage = ({ items }) => {
+const IsImage = ({ items, uniqueClassName="" }) => {
     if (!items || items.length === 0) {
         return null; // 空の配列なら何も返さない
     }
+    
+    const className = uniqueClassName ? `img img--${uniqueClassName}`: "img";
 
     return (
         <>
@@ -120,6 +114,7 @@ const IsImage = ({ items }) => {
                 width={items['width']}
                 height={items['height']}
                 alt=""
+                className={className}
             />
         </>
     );

@@ -222,7 +222,11 @@ body {
     margin-bottom: 0.75rem;
   }
 
-  .list--portfolio {
+
+}
+
+.list {
+  &--portfolio {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
     margin: auto;
@@ -234,9 +238,14 @@ body {
     @media screen and (max-width: 768px) {
       grid-template-columns: 1fr;
     }
+
+    img {
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
   }
 }
-
 
 
 /* portfolio page */
@@ -253,6 +262,8 @@ body {
 }
 
 .post-meta {
+  display: grid;
+  grid-template-columns: 150px 1fr;
   margin-bottom: 2.5em;
 
   &__title {

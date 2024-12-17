@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { fetchPageData } from "./lib/services/userApi";
+import { fadeElement } from "../app/lib/services/common";
 
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
+
 
 
 export default function Home() {
@@ -17,12 +20,12 @@ export default function Home() {
       setPageData(array)
       console.log(array);
     });
+    fadeElement();
   }, []);
 
-
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <>
+      <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="main-visual">
         <div className="title-wrap">
           <h1 className="title title--site">Daisuke Harada's<br></br>Portfolio</h1>
@@ -33,9 +36,9 @@ export default function Home() {
         <section id="creator" className="profile section section--profile slant-bg">
           <div className="section__inner items-center w-11/12">
             <div className="content grid gap-5">
-            <div className="profile__text">
+              <div className="profile__text js-target">
                 <dl className="career">
-                <dt><ruby>原田 大介<rp>(</rp><rt>ハラダ　ダイスケ</rt><rp>)</rp></ruby></dt>
+                <dt><ruby>原田 大介<rp>(</rp><rt>ハラダ  ダイスケ</rt><rp>)</rp></ruby></dt>
                 <dd>
                     <p>20代はネット回線等の訪問営業。 30代から学生自体に身に着けた
                       デザインと、自主的に身に着けていた WEBスキルでフリーランスとし
@@ -45,13 +48,13 @@ export default function Home() {
                 </dd>
               </dl>
             </div>
-            <div className="profile__image">
-              </div>
+            <div className="profile__image js-target">
+            </div>
             </div>
           </div>
         </section>
 
-        <section id="skill" className="section section--skill">
+        <section id="skill" className="section section--skill js-target">
           <div className="section__inner w-11/12">
             <h3 className="title">スキル</h3>
             <ul className="list list--skill">
@@ -71,7 +74,7 @@ export default function Home() {
             <div className="">
               <ul className="list list--portfolio grid">
                 {pageData ? (pageData.map((item, index) => (
-                  <li key={index} className="list__item">
+                  <li key={index} className="list__item js-target">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
                       <IsImage items={item[1]['eyecatch']} />
                       <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']}</span></Link>
@@ -82,7 +85,8 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </main >
+      </main >
+      </>
   );
 }
 

@@ -32,6 +32,6 @@
 "src/app/page.jsx"
 ,
 "src/app/post/[slug]/page.jsx"
-],
+, "src/app/lib/services/common.js"],
   "exclude": ["node_modules"]
 }
