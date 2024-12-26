@@ -26,3 +26,12 @@ export function fadeElement() {
     }
 }
 
+
+export function navFix() {
+    const header = document.querySelector(".nav--main");
+    const headerHeight = header.clientHeight;
+
+    console.log(`scroll ${window.height}`);
+
+}
+
