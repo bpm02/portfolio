@@ -99,6 +99,7 @@ h2 .title {
 }
 .section__inner {
   margin: 0 auto 50px;
+  max-width: 1400px;
 }
 
 .profile .content {
@@ -275,4 +276,18 @@ h2 .title {
   background: #ccc;
   text-align: center;
   padding: 1rem 0;
+}
+
+.js-target {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.js-target.fade-left {
+  transform: translateX(-50vw);
+}
+.js-target.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
 }/*# sourceMappingURL=globals.css.map */

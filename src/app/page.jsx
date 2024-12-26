@@ -36,7 +36,7 @@ export default function Home() {
         <section id="creator" className="profile section section--profile slant-bg">
           <div className="section__inner items-center w-11/12">
             <div className="content grid gap-5">
-              <div className="profile__text js-target">
+              <div className="profile__text js-target fade-left">
                 <dl className="career">
                 <dt><ruby>原田 大介<rp>(</rp><rt>ハラダ  ダイスケ</rt><rp>)</rp></ruby></dt>
                 <dd>
@@ -68,13 +68,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="section section--portfolio">
+        <section id="portfolio" className="section section--portfolio js-target">
           <div className="section__inner w-11/12">
             <h2 className="title">Portfolio</h2>
             <div className="">
               <ul className="list list--portfolio grid">
                 {pageData ? (pageData.map((item, index) => (
-                  <li key={index} className="list__item js-target">
+                  <li key={index} className="list__item">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
                       <IsImage items={item[1]['eyecatch']} />
                       <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']}</span></Link>
