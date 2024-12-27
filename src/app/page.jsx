@@ -8,6 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 
+import mv from "../../public/_mv/mv.jpg";
+
 
 
 export default function Home() {
@@ -18,7 +20,7 @@ export default function Home() {
     fetchPageData().then((data) => {
       const array = Object.entries(data.contents);
       setPageData(array)
-      console.log(array);
+      // console.log(array);
     });
     fadeElement();
   }, []);
@@ -26,11 +28,19 @@ export default function Home() {
   return (
     <>
       <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="main-visual">
-        <div className="title-wrap">
-          <h1 className="title title--site">Daisuke Harada's<br></br>Portfolio</h1>
+        <div className="main-visual">
+
+          <Image
+            src={mv}
+            width="1200"
+            height="900"
+            alt=""
+            className="img img--mv absolute"
+          />
+          <div className="title-wrap">
+            <h1 className="title title--site">Daisuke Harada's<br></br>Portfolio</h1>
+          </div>
         </div>
-      </div>
       <div className="contents">
 
         <section id="creator" className="profile section section--profile slant-bg">

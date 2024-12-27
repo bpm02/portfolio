@@ -27,7 +27,7 @@ const Header = () => {
 
         const handleScroll = () => {
             const header = document.querySelector(".nav--main");
-            if (window.scrollY > 200) {
+            if (window.scrollY > 56) {
                 header?.classList.add("fixed");
             } else {
                 header?.classList.remove("fixed");
@@ -64,7 +64,7 @@ const Header = () => {
 
     return (
         <nav className={`nav nav--main ${navClass} z-10 w-full text-center`}>
-            <ul className="list list--main-nav  flex justify-end  bg-transparent p-4 gap-3 ml-auto mr-0">
+            <ul className="list list--main-nav  flex justify-end p-4 gap-3 ml-auto mr-0">
                 <li className="list__item"><Link href={`${rootURLText}#creator`} className="link">製作者</Link></li>
                 <li className="list__item"><Link href={`${rootURLText}#portfolio`} className="link">ポートフォリオ</Link></li>
             </ul>
