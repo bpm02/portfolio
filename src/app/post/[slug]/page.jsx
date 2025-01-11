@@ -59,9 +59,15 @@ export default function Home() {
 
     }, []);
 
-    const { title, text, eyecatch, category, url, inCharge, technology, overview } = pageData ? GetContents(pageData) : {};
+    const { title, text, eyecatch, category, url, inChange, technology, overview, functions } = pageData ? GetContents(pageData) : {};
     const thumbUrl = eyecatch ? (eyecatch) : ([]);
 
+    const contents = {
+        "概要": overview,
+        "担当": inChange,
+        "使用技術": technology,
+        "機能": technology,
+    }
 
     return (
         <>
@@ -82,12 +88,15 @@ export default function Home() {
                                 />
                             </Link>
                         </dd>
+
                         <dt className="post-meta__title">概要</dt>
                         <dd className="post-meta__text">{overview ? (overview) : ""}</dd>
                         <dt className="post-meta__title">担当</dt>
-                        <dd className="post-meta__text">{inCharge ? (inCharge) : ""}</dd>
+                        <dd className="post-meta__text">{inChange ? (inChange) : ""}</dd>
                         <dt className="post-meta__title">使用技術</dt>
                         <dd className="post-meta__text">{technology ? (technology) : ""}</dd>
+                        <dt className="post-meta__title">機能</dt>
+                        <dd className="post-meta__text">{functions ? (functions) : ""}</dd>
                     </dl>
                     <HTMLContentComponent pageData={text} />
                 </div>
@@ -121,25 +130,22 @@ const IsImage = ({ items, uniqueClassName="" }) => {
 };
 
 const GetContents = (array) => {
-    // console.log(`content ${JSON.stringify(array)}`);
+    console.log(`content ${JSON.stringify(array)}`);
     if (!array) {
         return null;
     }
-
-    // if (!array || array.length === 0) {
-    //     return null; // 空の配列やnullの場合は何も返さない
-    // }
 
     const title = array.title ? array.title : "";
     const text = array.text ? array.text : "";
     const eyecatch = array.eyecatch ? array.eyecatch : "";
     const category = array.category ? array.category : "";
     const url = array.url ? array.url : "";
-    const inCharge = array.inCharge ? array.inCharge : "";
+    const inChange = array.inChange ? array.inChange : "";
     const technology = array.technology ? array.technology : "";
     const overview = array.overview ? array.overview : "";
+    const functions = array.functions ? array.functions : "";
 
-    return { title, text, eyecatch, category, url, inCharge, technology, overview }; // オブジェクトで返す
+    return { title, text, eyecatch, category, url, inChange , technology, overview, functions }; // オブジェクトで返す
 };
 
 
@@ -158,14 +164,14 @@ const HTMLContentComponent = ({ pageData }) => {
     );
 };
 
+
+
 const Pager = (props) => {
-    console.log(`pager : ${JSON.stringify(props)}`);
 
 
     if (props.pageData == null) {
         return;
     }
-    console.log(`pager : ${JSON.stringify(props)}`);
     return (
         <>
             <Link href={props.pageData.id ? props.pageData.id : ""} className={props.direction}>{props.pageData.title}</Link>

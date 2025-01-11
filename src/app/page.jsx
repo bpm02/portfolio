@@ -87,7 +87,7 @@ export default function Home() {
                   <li key={index} className="list__item">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
                       <IsImage items={item[1]['eyecatch']} />
-                      <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']}</span></Link>
+                      <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']} 様</span></Link>
                   </li>
                 ))) : (<li>Loding...</li>)}
               </ul>
