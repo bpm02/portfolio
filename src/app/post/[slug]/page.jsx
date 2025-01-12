@@ -19,7 +19,7 @@ export default function Home() {
 
     useEffect(() => {
         const id = urlPath.replace('/post/', '');
-        console.log(`id: ${id}`);
+        // console.log(`id: ${id}`);
         fetchPageData().then((data) => {
             const array = Object.entries(data.contents);
             let currentNum = -1;
@@ -31,7 +31,7 @@ export default function Home() {
                 if (item[1]["id"] == id) {
                     setPageData(item[1]);
                     currentNum = item[0];
-                    console.log(`cuurent num ${currentNum}`)
+                    // console.log(`cuurent num ${currentNum}`)
                     prevNum = Number(currentNum) - 1;
                     nextNum = Number(currentNum) + 1;
 
@@ -76,27 +76,27 @@ export default function Home() {
                 <div className="page__inner">
                     <h1 className="title title--page">{title ? (title) : ""}</h1>
                     <dl className="post-meta">
-                        <dt className="post-meta__title">URL</dt>
-                        <dd className="post-meta__text">
-                            <Link href={url ? (url) : ""} className="link link--new-window" target="_blank">
-                                {url ? (url) : ""}
-                                <Image
-                                    src={localImage}
-                                    width="16"
-                                    height="16"
-                                    alt="外部リンクへ"
-                                />
-                            </Link>
-                        </dd>
+                        {url && (
+                            <>
+                                <dt className="post-meta__title">URL</dt>
+                                <dd className="post-meta__text">
+                                    <Link href={url} className="link link--new-window" target="_blank">
+                                        {url}
+                                        <Image
+                                            src={localImage}
+                                            width="16"
+                                            height="16"
+                                            alt="外部リンクへ"
+                                        />
+                                    </Link>
+                                </dd>
+                            </>
+                        )}
 
-                        <dt className="post-meta__title">概要</dt>
-                        <dd className="post-meta__text">{overview ? (overview) : ""}</dd>
-                        <dt className="post-meta__title">担当</dt>
-                        <dd className="post-meta__text">{inChange ? (inChange) : ""}</dd>
-                        <dt className="post-meta__title">使用技術</dt>
-                        <dd className="post-meta__text">{technology ? (technology) : ""}</dd>
-                        <dt className="post-meta__title">機能</dt>
-                        <dd className="post-meta__text">{functions ? (functions) : ""}</dd>
+                        <MetaDescription title="概要" description={overview} />
+                        <MetaDescription title="担当" description={inChange} />
+                        <MetaDescription title="使用技術" description={technology} />
+                        <MetaDescription title="機能" description={functions} />
                     </dl>
                     <HTMLContentComponent pageData={text} />
                 </div>
@@ -109,7 +109,24 @@ export default function Home() {
     );
 }
 
-const IsImage = ({ items, uniqueClassName="" }) => {
+
+const MetaDescription = ({ title, description }) => {
+    // 空文字、null、undefinedの場合は何も表示しない
+    if (!description || description.trim() === '') {
+        return null;
+    }
+
+    return (
+        <>
+            <dt className="post-meta__title">{title}</dt>
+            <dd className="post-meta__text">{description}</dd>
+        </>
+    );
+};
+
+
+const IsImage = ({ items, uniqueClassName = "" }) => {
+    console.log(`item ${items}`);
     if (!items || items.length === 0) {
         return null; // 空の配列なら何も返さない
     }
@@ -136,8 +153,8 @@ const GetContents = (array) => {
     }
 
     const title = array.title ? array.title : "";
-    const text = array.text ? array.text : "";
-    const eyecatch = array.eyecatch ? array.eyecatch : "";
+    const text = array.content ? array.content : "";
+    const eyecatch = array.thumbnail ? array.thumbnail : "";
     const category = array.category ? array.category : "";
     const url = array.url ? array.url : "";
     const inChange = array.inChange ? array.inChange : "";
@@ -150,7 +167,7 @@ const GetContents = (array) => {
 
 
 const HTMLContentComponent = ({ pageData }) => {
-    const htmlContent = pageData && pageData[1] ? pageData[1] : null;
+    const htmlContent = pageData ? pageData : null;
 
     return (
         <div>
@@ -158,7 +175,7 @@ const HTMLContentComponent = ({ pageData }) => {
             {htmlContent ? (
                 <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
             ) : (
-                <div>データがありません。</div>  // htmlContentが無い場合のフォールバック
+                <span></span>  // htmlContentが無い場合のフォールバック
             )}
         </div>
     );

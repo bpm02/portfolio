@@ -20,7 +20,7 @@ export default function Home() {
     fetchPageData().then((data) => {
       const array = Object.entries(data.contents);
       setPageData(array)
-      // console.log(array);
+      console.log(array);
     });
     fadeElement();
   }, []);
@@ -86,8 +86,12 @@ export default function Home() {
                 {pageData ? (pageData.map((item, index) => (
                   <li key={index} className="list__item">
                     <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
-                      <IsImage items={item[1]['eyecatch']} />
-                      <span className="absolute top-1/2 w-11/12 text-center z-10 m-auto text-white">{item[1]['title']} 様</span></Link>
+                      <IsImage items={item[1]['thumbnail']} />
+                      <div className="absolute flex flex-col items-center justify-center inset-0 w-11/12 text-center z-10 text-white m-auto">
+                        <div className="text-sm">{item[1]['category']["name"]}</div>
+                        <div className="font-bold">{item[1]['title']} 様</div>
+                      </div>
+                    </Link>
                   </li>
                 ))) : (<li>Loding...</li>)}
               </ul>
