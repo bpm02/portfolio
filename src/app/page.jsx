@@ -20,7 +20,7 @@ export default function Home() {
     fetchPageData().then((data) => {
       const array = Object.entries(data.contents);
       setPageData(array)
-      console.log(array);
+      // console.log(array);
     });
     fadeElement();
   }, []);

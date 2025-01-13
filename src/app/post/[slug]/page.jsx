@@ -126,7 +126,7 @@ const MetaDescription = ({ title, description }) => {
 
 
 const IsImage = ({ items, uniqueClassName = "" }) => {
-    console.log(`item ${items}`);
+    // console.log(`item ${items}`);
     if (!items || items.length === 0) {
         return null; // 空の配列なら何も返さない
     }
@@ -147,7 +147,7 @@ const IsImage = ({ items, uniqueClassName = "" }) => {
 };
 
 const GetContents = (array) => {
-    console.log(`content ${JSON.stringify(array)}`);
+    // console.log(`content ${JSON.stringify(array)}`);
     if (!array) {
         return null;
     }

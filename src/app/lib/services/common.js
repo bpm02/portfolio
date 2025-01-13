@@ -1,5 +1,5 @@
 export function fadeElement() {
-    console.log("onload");
+    // console.log("onload");
     const target = document.querySelectorAll('.js-target');
 
     //オプション設定

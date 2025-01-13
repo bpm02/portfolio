@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -7,12 +5,18 @@ import "./globals.css";
 
 import Header from "./components/Header";
 
-  const inter = Inter({ subsets: ["latin"] });
+// サーバーサイドでメタデータをエクスポート
+export const metadata = {
+  title: "ハラダ ダイスケのポートフォリオ",
+  description: "ポートフォリオサイトです。",
+  robots: {
+    index: false, // noindexを指定
+    follow: false, // nofollowを指定
+  },
+};
 
-  // export const metadata: Metadata = {
-  //   title: "Portfolio",
-  //   description: "ハラダダイスケのポートフォリオ",
-  // };
+const inter = Inter({ subsets: ["latin"] });
+  
 
   export default function RootLayout({
     children,

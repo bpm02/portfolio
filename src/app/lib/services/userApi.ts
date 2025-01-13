@@ -10,7 +10,7 @@ export const fetchPageData = async (pageId: string = ""): Promise<any> => {
         else {
             endpoint = `${endpoint}?limit=100`;
         }
-        console.log(`endpoint: ${endpoint}`);
+        // console.log(`endpoint: ${endpoint}`);
         // console.log(`endpoint ${process.env.NEXT_PUBLIC_API_URL} KEY ${process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY}`)
         const response = await axios.get(
             `${endpoint}`,
