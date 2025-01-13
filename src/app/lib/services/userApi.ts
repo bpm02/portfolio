@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // ユーザー情報を取得する関数
 export const fetchPageData = async (pageId: string = ""): Promise<any> => {
-    let endpoint: string = `${process.env.NEXT_PUBLIC_API_URL}`;
+    let endpoint: string = `${process.env.API_URL}`;
     try {
         // 外部APIエンドポイント
         if (pageId !== "") { endpoint = `${endpoint}/${pageId}` }
@@ -16,7 +16,7 @@ export const fetchPageData = async (pageId: string = ""): Promise<any> => {
             `${endpoint}`,
             {
                 headers: {
-                    'X-API-KEY': process.env.NEXT_PUBLIC_MICRO_CMS_API_KEY
+                    'X-API-KEY': process.env.MICRO_CMS_API_KEY
                 }
             }
         );
