@@ -85,7 +85,7 @@ export default function Home() {
               <ul className="list list--portfolio grid">
                 {pageData ? (pageData.map((item, index) => (
                   <li key={index} className="list__item">
-                    <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4">
+                    <Link href={`post/${item[1]['id']}`} className="link link--portfolio relative flex items-center justify-center text-white aspect-square p-4" rel="nofollow">
                       <IsImage items={item[1]['thumbnail']} />
                       <div className="absolute flex flex-col items-center justify-center inset-0 w-11/12 text-center z-10 text-white m-auto">
                         <div className="text-sm">{item[1]['category']["name"]}</div>

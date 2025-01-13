@@ -80,7 +80,7 @@ export default function Home() {
                             <>
                                 <dt className="post-meta__title">URL</dt>
                                 <dd className="post-meta__text">
-                                    <Link href={url} className="link link--new-window" target="_blank">
+                                    <Link href={url} className="link link--new-window" target="_blank" rel="nofollow">
                                         {url}
                                         <Image
                                             src={localImage}
