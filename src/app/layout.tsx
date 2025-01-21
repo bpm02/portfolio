@@ -7,8 +7,8 @@ import Header from "./components/Header";
 
 // サーバーサイドでメタデータをエクスポート
 export const metadata = {
-  title: "ハラダ ダイスケのポートフォリオ",
-  description: "ポートフォリオサイトです。",
+  title: "ポートフォリオ",
+  description: "ポートフォリオサイト",
   robots: {
     index: false, // noindexを指定
     follow: false, // nofollowを指定
@@ -30,7 +30,7 @@ const inter = Inter({ subsets: ["latin"] });
         <div className="wrapper">
           <Header />
           {children}
-          <footer className="footer"><small className="copy">© daisuke harada. 2024</small></footer>
+          {/* <footer className="footer"><small className="copy">©. 2024</small></footer> */}
         </div>
       </body>
     </html>
